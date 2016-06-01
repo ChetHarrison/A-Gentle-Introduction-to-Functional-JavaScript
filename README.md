@@ -1,6 +1,6 @@
 # A Gentle Introduction to Functional JavaScript #
 
-Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as Algebraic Structures. It's application in JavaScript is further obfuscated by many different implementations with out standards much the same way Promises developed pre A+ spec. The current de facto specification is called ["Fantasy-land"](https://github.com/fantasyland/fantasy-land) only dates back to April, 2013. With out a spec people create different names for the same functions and libs are not compatible.
+Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. It's application in JavaScript is further obfuscated by many different pre spec examples and implementations much the same way Promises developed pre A+ spec. The current de facto specification is called ["Fantasy-land"](https://github.com/fantasyland/fantasy-land) only dates back to April, 2013. With out a spec people create different names for the same functions and libs are not compatible.
 
 JavaScript was not written as a functional programming language. It had to adopt this paradigm from other languages. As it turns out JS, with first class, higher-order functions and now in ES2015 proper tail-call optimization, is well suited to the the task.
 
