@@ -9,4 +9,5 @@ _How do avoid state?_ Any time you need to represent a state change you pass the
 
 Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way to print out a monthly bank statement with out implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance.
 
-check out !["Time Travel Debug"](https://cdn-images-1.medium.com/max/1600/1*BTRxlHu8WuCF4Iep4R44lA.gif "Redux DevTools")
+check out "Time Travel Debug" from Redux DevTools
+![redux](https://cdn-images-1.medium.com/max/1600/1*BTRxlHu8WuCF4Iep4R44lA.gif "Redux DevTools")
