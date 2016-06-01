@@ -15,12 +15,12 @@ lead to the failure. When you mutate variables you are throwing away that sequen
 
 __How do avoid state?__ Any time you need to represent a state change you pass the previous value to a function that returns a new value.
 
-Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way generating a monthly bank statement listing all of your activity without implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance. That can be pretty useful.
+Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way generating a monthly bank statement listing all of your activity without implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance. That can be pretty useful ...
 
 Check out "Time Travel Debug" from Redux DevTools
 ![redux](https://cdn-images-1.medium.com/max/1600/1*BTRxlHu8WuCF4Iep4R44lA.gif "Redux DevTools")
 
-
+----------------
 ### Glossary ###
 
 __First-Class Functions__ The ability to assign a function to a variable.
