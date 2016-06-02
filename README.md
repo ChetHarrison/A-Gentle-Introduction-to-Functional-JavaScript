@@ -78,12 +78,12 @@ const b = 1 - ( 2 - 3 ); // 2
 a === b: // false
 ```
 
-__Container__ an object that you can place a value in with a function that takes a function as an argument that will allow use to perform transformations using that value as input and returning a new container with the result as output.
+__Container__ an object that you can place a value in with a function that takes a function and applies it to the value as input and returning a new container of the same type with the result as output.
 
 
 ### Part One Homework ###
 
-This will probably be a bit reminiscent "the Karate Kid" where Daniel has to paint the fence a thousand times before Mr. Miyagi will show him real Karate moves. But you will find, like Daniel, that after you are done painting fences you already know karate. The patterns we will cover in Part Two are built on some simple and familiar building blocks.
+This will probably be a bit reminiscent "the Karate Kid" where Daniel has to paint the fence a thousand times before Mr. Miyagi will show him real Karate moves. But you will find, like Daniel, that after you are done painting fences you will already know karate. The patterns we will cover in Part Two are built on some simple and familiar building blocks.
 
 Probably the most common pattern in computing is the concept of and _Item_ and a _Collection_. When you write a function that will transform some input to some output it should be operating on an _Item_ not a _Collection_ because we have a way of mapping over a _Collection_ and applying that function to each _Item_.
 
@@ -93,3 +93,5 @@ Explore some of the FP utility libraries out there:
 
 * [ramda](http://ramdajs.com)
 * [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+
+For a quick playground I would pull those libs into your favorite JSBin or CodePen etc. and try out some composition. All of Ramda's functions are curried.
