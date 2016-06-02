@@ -8,9 +8,9 @@ The good news is you don't have to flip a switch and go functional. You can appl
 
 Ultimately we will see that a stateless app is pointless. But you need to judiciously select the points in your code where you allow mutation to occur. Most of the internal organs of your code should strive to be immutable, and consequently, extraordinarily testable. The more mutations you can eliminate the better off you are.
 
-__Why should your care about immutability?__ If you are going to send an electron down a conduit it has to be big enough for the electron. Chip manufactures are at the atomic boundaries of conduit miniaturization. As a result clock rates have not increased since 2004.
+__Why should your care about immutability?__ Chip manufactures are at the atomic boundaries of transistor miniaturization. As a result clock rates have not increased since 2004.
 
-Multi-core is currently the preferred strategy for improving speed. Shared mutable state cannot be distributed in parallel across multiple cores because  is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
+Multi-core is currently the preferred strategy for improving speed. Routines with shared mutable state cannot be distributed in parallel across multiple cores because is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
 
 When you reassign (mutate) a variable you are introducing state change to your application. To reproduce a complex bug you often need the sequence of computations that lead to the failure. When you mutate variables you are throwing away that sequence.
 
