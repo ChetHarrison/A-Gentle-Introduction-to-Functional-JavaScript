@@ -40,9 +40,17 @@ __Arity__ The number of parameters a function takes.
 
 __Partial Application__ A function with an incomplete set of parameters.
 
-__Currying__ A curried function that is passed fewer parameters than it's arity will return a partially applied function that will delay execution until it has been passed all of the required parameters.
+__Currying__ A curried function that is passed fewer parameters than it's arity will return a partially applied function that will delay execution until it has been passed all of the required parameters. [see this post by Hugh Jackson](https://web.archive.org/web/20140714014530/http://hughfdjackson.com/javascript/why-curry-helps)
 
-__Point Free__ A style where we strive to pipe data from the output of one function to the input of the next avoiding named parameters. It is more concise, easier to read.
+__Point Free__ A style where we strive to pipe data from the output of one function to the input of the next avoiding named parameters. It is more concise, easier to read, and lends itself to composition.
+```
+const inc = x => x + 1; // x is a point
+const add3 = compose( inc, inc, inc ); // no points here
+const val = add3( 1 ); // val === 4
+
+// compose will return something like this
+x => inc( inc( inc( x ) ) );
+```
 
 __Composition__ Chaining functions together by piping the output of one function to the input of the next in the composition. Composing pure functions will respect the law of associativity. This will allow us to safely apply some optimizations to our code.
 
