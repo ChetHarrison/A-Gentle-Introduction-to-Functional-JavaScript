@@ -32,7 +32,7 @@ __High-Order Functions__ Functions that can take and return functions.
 
 __Side Effects__ When a function mutates state outside it's scope.
 
-__Purity__ A function with no side effects that maps every input to exactly one corresponding output. One of the many benefits of a pure function, and a good to test of purity, is that it can be cashed.
+__Purity__ A function with no side effects that maps every input to exactly one corresponding output. One of the many benefits of a pure function is that it can be cashed. Cashing is good but not complete test of purity but side effects are pretty easy to spot.
 
 __Imperative vs. Declarative__ A `for` loop is a very specific solution to looping. We call this _"imperative"_ because we are explaining _how_ to do the loop. With `Array.prototype.map` we are declaring _what_ we want. If I discover a more optimal way to map I can refactor my map function with out breaking all the code that calls it. We call this _"declarative"_. So if you want to know if you are writing declarative code ask your self if you can refactor it with out breaking the code that calls it.
 
@@ -41,6 +41,16 @@ __Arity__ The number of parameters a function takes.
 __Partial Application__ A function with an incomplete set of parameters.
 
 __Currying__ A curried function that is passed fewer parameters than it's arity will return a partially applied function that will delay execution until it has been passed all of the required parameters. [see this post by Hugh Jackson](https://web.archive.org/web/20140714014530/http://hughfdjackson.com/javascript/why-curry-helps)
+
+```
+const add = ( a, b ) => a + b; // has an arity of 2
+const addC = curry( add ); // returns a curried add function
+add3 = addC( 3 ); // add was partially applied
+
+// the addC( 3 ) call will return a new function that looks like this
+b => 3 + b;
+console.log( add3( 1 ) ); // logs 4
+```
 
 __Point Free__ A style where we strive to pipe data from the output of one function to the input of the next avoiding named parameters. It is more concise, easier to read, and lends itself to composition.
 ```
@@ -75,7 +85,9 @@ __Container__ an object that you can place a value in with a function that takes
 
 ### Part One Homework ###
 
-The patterns we will cover in Part Two are built on some simple and familiar building blocks. Probably the most common pattern in computing is the concept of and _Item_ and a _Collection_. When you write a function that will transform some input to some output it should be operating on an _Item_ not a _Collection_ because we have a way of mapping over a _Collection_ and applying that function to each _Item_.
+This will probably be a bit reminiscent "the Karate Kid" where Daniel has to paint the fence a thousand times before Mr. Miyagi will show him real Karate moves. But you will find, like Daniel, that after you are done painting fences you already know karate. The patterns we will cover in Part Two are built on some simple and familiar building blocks.
+
+Probably the most common pattern in computing is the concept of and _Item_ and a _Collection_. When you write a function that will transform some input to some output it should be operating on an _Item_ not a _Collection_ because we have a way of mapping over a _Collection_ and applying that function to each _Item_.
 
 [This is an excellent tutorial](http://reactivex.io/learnrx/) written by Jafar Husain, tech lead at Netflix. It should take you a few hours and will give you skills you can apply immediately.
 
