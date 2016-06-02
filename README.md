@@ -14,7 +14,7 @@ __Why should your care about immutability?__ We have attained the smallest possi
 
 When you reassign (mutate) a variable you are introducing state change to your application. To reproduce a complex bug you often need the sequence of computations that lead to the failure. When you mutate variables you are throwing away that sequence.
 
-__How do you avoid state? Any time you need to model a state change you pass the previous value to a function that returns a new value.--
+__How do you avoid state? Any time you need to model a state change you pass the previous value to a function that returns a new value.__
 
 Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way generating a monthly bank statement listing all of your activity without implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance. That can be pretty useful ...
 
