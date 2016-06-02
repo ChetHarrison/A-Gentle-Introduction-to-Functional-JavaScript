@@ -10,13 +10,13 @@ The good news is you don't have to flip a switch and go functional. You can appl
 
 Ultimately we will see that a stateless app is pointless. But you need to judiciously select the points in your code where you allow mutation to occur. Most of the internal organs of your code should strive to be immutable, and consequently, extraordinarily testable. The more mutations you can eliminate the better off you are.
 
-__Why should your care about immutability?__ If you are going to send an electron down a conduit the conduit has to be big enough for the electron. Chip manufactures are at the atomic boundaries of conduit miniaturization, a milestone I would put on par with landing on the moon in 1969. As a result clock rates have not improved since 2004.
+__Why should your care about immutability?__ If you are going to send an electron down a conduit the conduit has to be big enough for the electron. Chip manufactures are at the atomic boundaries of conduit miniaturization, a milestone I would put on par with landing on the moon in 1969. As a result clock rates have not increased since 2004.
 
 Multi-core is currently the preferred strategy for improving speed. If your code is not thread-safe it cannot be distributed in parallel across multiple cores because shared mutable state is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
 
 When you reassign (mutate) a variable you are introducing state change to your application. To reproduce a complex bug you often need the sequence of computations that lead to the failure. When you mutate variables you are throwing away that sequence.
 
-__How do you avoid state change? Any time you need to model a state change you pass the previous value to a function that returns a new value.__
+__How do you avoid state change?__ Any time you need to model a state change __you pass the previous value to a function that returns a new value.__ Don't mutate the old value just return a new one.
 
 Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way generating a monthly bank statement listing all of your activity without implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance. That can be pretty useful ...
 
