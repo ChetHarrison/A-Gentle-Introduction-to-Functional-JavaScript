@@ -1,12 +1,12 @@
 # A Gentle Introduction to Functional JavaScript #
 
-Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. It's application in JavaScript is further obfuscated by many different pre spec examples and implementations much the same way Promises developed pre A+ spec. The current de facto specification, ["Fantasy-land"](https://github.com/fantasyland/fantasy-land), was proposed April, 2013. With out a spec people create different interfaces for the same functions and breed chaos.
+Functional Programming tends to intimidate people with the academic names borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. Competing interfaces for the same functionality will abound and breed chaos without a specification. It's application in JavaScript is further obfuscated by many different pre-spec examples the same way Promises developed pre A+ spec. The current de facto specification, ["Fantasy-land"](https://github.com/fantasyland/fantasy-land), was proposed April, 2013 and appears to have rallied consonance.
 
-JavaScript was not designed to be a functional language. We have adopted this paradigm from other languages. Fortunately JavaScript is well suited to the the task, thanks to first-class, higher-order functions and proper tail-call optimization provided in ES2015.
+JavaScript was not designed to be a functional language. It has adopted this paradigm from other languages. Fortunately JavaScript is well suited to the the task thanks to first-class, higher-order functions and proper tail-call optimization provided in ES2015.
 
 The more abstract a concept is the harder it is to understand. Interfaces are abstract by nature. The more abstract they are the more powerful they become because they allow us to solve a wider range of seemingly unrelated problems with a surprisingly small set of patterns.
 
-The good news is you don't have to flip a switch and go functional. You can apply bits and peaces as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes a lot more enjoyable.
+The good news is you don't have to flip a switch and go functional. You can apply bits of functional technique as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes a lot more enjoyable.
 
 Ultimately we will see that a stateless app is pointless. But you need to judiciously select the points in your code where where you allow mutation to occur. Most of the internal organs of your code should strive to be immutable, and consequently, extraordinarily testable. The more mutations you can eliminate the better off you are.
 
