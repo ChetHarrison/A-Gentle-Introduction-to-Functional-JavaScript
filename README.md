@@ -1,8 +1,6 @@
 # A Gentle Introduction to Functional JavaScript #
 
-Functional Programming tends to intimidate people with the academic names borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. Competing interfaces for the same functionality will abound and breed chaos without a specification. It's application in JavaScript is further obfuscated by many different pre-spec examples the same way Promises developed pre A+ spec. The current de facto specification, ["Fantasy-land"](https://github.com/fantasyland/fantasy-land), was proposed April, 2013 and appears to have rallied consonance.
-
-JavaScript was not designed to be a functional language. It has adopted this paradigm from other languages. Fortunately JavaScript is well suited to the the task thanks to first-class, higher-order functions and proper tail-call optimization provided in ES2015.
+Functional Programming tends to intimidate people with the academic terms borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. JavaScript was not designed to be a functional language. It has adopted this paradigm from other languages. Fortunately JavaScript is well suited to the the task thanks to first-class, higher-order functions and proper tail-call optimization provided in ES2015. The adoption of functional programming in JavaScript was further obfuscated by many different pre-spec examples the same way Promises developed pre A+ spec. The current de facto specification, ["Fantasy-land"](https://github.com/fantasyland/fantasy-land), was proposed April, 2013 and appears to have found broad adoption.
 
 The more abstract a concept is the harder it is to understand. Interfaces are abstract by nature. The more abstract they are the more powerful they become because they allow us to solve a wider range of seemingly unrelated problems with a surprisingly small set of patterns.
 
@@ -10,9 +8,9 @@ The good news is you don't have to flip a switch and go functional. You can appl
 
 Ultimately we will see that a stateless app is pointless. But you need to judiciously select the points in your code where you allow mutation to occur. Most of the internal organs of your code should strive to be immutable, and consequently, extraordinarily testable. The more mutations you can eliminate the better off you are.
 
-__Why should your care about immutability?__ If you are going to send an electron down a conduit the conduit has to be big enough for the electron. Chip manufactures are at the atomic boundaries of conduit miniaturization, a milestone I would put on par with landing on the moon in 1969. As a result clock rates have not increased since 2004.
+__Why should your care about immutability?__ If you are going to send an electron down a conduit it has to be big enough for the electron. Chip manufactures are at the atomic boundaries of conduit miniaturization. As a result clock rates have not increased since 2004.
 
-Multi-core is currently the preferred strategy for improving speed. If your code is not thread-safe it cannot be distributed in parallel across multiple cores because shared mutable state is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
+Multi-core is currently the preferred strategy for improving speed. Shared mutable state cannot be distributed in parallel across multiple cores because  is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
 
 When you reassign (mutate) a variable you are introducing state change to your application. To reproduce a complex bug you often need the sequence of computations that lead to the failure. When you mutate variables you are throwing away that sequence.
 
