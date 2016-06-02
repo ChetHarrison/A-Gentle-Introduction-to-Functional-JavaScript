@@ -1,18 +1,20 @@
 # A Gentle Introduction to Functional JavaScript #
 
-Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. It's application in JavaScript is further obfuscated by many different pre spec examples and implementations much the same way Promises developed pre A+ spec. The current de facto specification is called ["Fantasy-land"](https://github.com/fantasyland/fantasy-land) only dates back to April, 2013. With out a spec people create different names for the same functions and libs are not compatible.
+Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. It's application in JavaScript is further obfuscated by many different pre spec examples and implementations much the same way Promises developed pre A+ spec. The current de facto specification, ["Fantasy-land"](https://github.com/fantasyland/fantasy-land), was proposed April, 2013. With out a spec people create different names for the same functions and libs are not compatible.
 
-JavaScript was not designed to be functional programming language. It had to adopt this paradigm from other languages. As it turns out JS is well suited to the the task thanks to first class, higher-order functions and now in ES2015 proper tail-call optimization.
+JavaScript was not designed to be a functional language. We have adopted this paradigm from other languages. Fortunately JavaScript is well suited to the the task, thanks to first-class, higher-order functions and proper tail-call optimization provided in ES2015.
 
 The more abstract a concept is the harder it is to understand. Interfaces are abstract by nature. The more abstract they are the more powerful they become because they allow us to solve a wider range of seemingly unrelated problems with a surprisingly small set of patterns.
 
-Functional Programming is worth striving for, and that's the good news. You don't have to flip a switch and go functional. You can apply bits and peaces as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes a lot more enjoyable.
+The good news is you don't have to flip a switch and go functional. You can apply bits and peaces as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes a lot more enjoyable.
 
-__Why should I care about immutability?__ Transistors cannot get any smaller. Clock rates plateaued in 2004. Multi-core is currently the preferred strategy for improving speed. If your code is not thread-safe it cannot be distributed in parallel across multiple cores. Shared mutable state is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
+Ultimately we will see that a stateless app is pointless. But you need to judiciously select the points in your code where where you allow mutation to occur. Most of the internal organs of your code should strive to be immutable, and consequently, extraordinarily testable. The more mutations you can eliminate the better off you are.
+
+__Why should your care about immutability?__ We have attained the smallest possible transistor. Clock rates plateaued in 2004. Multi-core is currently the preferred strategy for improving speed. If your code is not thread-safe it cannot be distributed in parallel across multiple cores. Shared mutable state is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
 
 When you reassign (mutate) a variable you are introducing state change. To reproduce a complex bug you often need the sequence of computations that lead to the failure. When you mutate variables you are throwing away that sequence.
 
-__How do avoid state?__ Any time you need to model a state change you pass the previous value to a function that returns a new value.
+__How do you avoid state?__ Any time you need to model a state change you pass the previous value to a function that returns a new value.
 
 Imagine a banking application. If you create an account object that holds a balance variable and mutates it every time you deposit or withdraw money you have no way generating a monthly bank statement listing all of your activity without implementing that functionality. If you return a new account object with an updated balance you will accumulate a history of the exact sequence that lead up to the current balance. That can be pretty useful ...
 
