@@ -2,11 +2,11 @@
 
 Functional Programming tends to intimidate people at first with the scary names it borrowed from Category Theory to describe interfaces known as _"Algebraic Structures"_. It's application in JavaScript is further obfuscated by many different pre spec examples and implementations much the same way Promises developed pre A+ spec. The current de facto specification is called ["Fantasy-land"](https://github.com/fantasyland/fantasy-land) only dates back to April, 2013. With out a spec people create different names for the same functions and libs are not compatible.
 
-JavaScript was not written as a functional programming language. It had to adopt this paradigm from other languages. As it turns out JS, with first class, higher-order functions and now in ES2015 proper tail-call optimization, is well suited to the the task.
+JavaScript was not designed to be functional programming language. It had to adopt this paradigm from other languages. As it turns out JS is well suited to the the task thanks to first class, higher-order functions and now in ES2015 proper tail-call optimization.
 
 The more abstract a concept is the harder it is to understand. Interfaces are abstract by nature. The more abstract they are the more powerful they become because they allow us to solve a wider range of seemingly unrelated problems with a surprisingly small set of patterns.
 
-Functional Programming is worth striving for, and that's the good news. You don't have to flip a switch and go functional. You can apply bits and peaces as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes
+Functional Programming is worth striving for, and that's the good news. You don't have to flip a switch and go functional. You can apply bits and peaces as you learn them. I have been slowly building up my functional play book over the past 3 years. As a result every refactor becomes a lot more enjoyable.
 
 __Why should I care about immutability?__ Transistors cannot get any smaller. Clock rates plateaued in 2004. Multi-core is currently the preferred strategy for improving speed. If your code is not thread-safe it cannot be distributed in parallel across multiple cores. Shared mutable state is not thread-safe. See [Robert Martin's talk](https://www.youtube.com/watch?v=7Zlp9rKHGD4) on this topic. Just note: an "assignment statement" is totally benign a "reassignment statement" is problematic.
 
@@ -44,11 +44,19 @@ __Composition__ Chaining functions together by piping the output of one function
 
 __Associativity__ A binary operation in which the order of evaluation is not important. Addition of whole numbers is associative.
 
-`( 1 + 2 ) + 3 === 6 === 1 + ( 2 + 3 )`
+```
+const a = ( 1 + 2 ) + 3; // 6
+const b = 1 + ( 2 + 3 ); // 6
+a === b; // true
+```
 
 Subtraction of whole numbers is not associative.
 
-`( 1 - 2 ) - 3 === -4 !== 0 === 1 - ( 2 - 3 )`
+```
+const a = ( 1 - 2 ) - 3; // -4
+const b = 1 - ( 2 - 3 ); // 2
+a === b: // false
+```
 
 __Container__ an object that you can place a value in with a function that takes a function as an argument that will allow use to perform transformations using that value as input and returning a new container with the result as output.
 
