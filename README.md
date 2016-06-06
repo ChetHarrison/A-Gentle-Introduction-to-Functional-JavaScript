@@ -24,13 +24,17 @@ Check out "Time Travel Debug" from Redux DevTools
 ----------------
 ### Glossary ###
 
-__First-Class Functions__ The ability to assign a function to a variable.
+__First-Class Functions__ Functions are valid values like primitives and objects.
 
 __High-Order Functions__ Functions that can take and return functions.
 
 __Side Effects__ When a function mutates state outside it's scope.
 
-__Purity__ A function with no side effects that maps every input to exactly one corresponding output. One of the many benefits of a pure function is that it can be cashed. Cashing is good but not complete test of purity but side effects are pretty easy to spot.
+__Referential Transparency__
+
+__Substitution vs. Environment Model__ A&S
+
+__Purity__ A function with no side effects that is passed all the resources it needs work and maps the same result given the same input. One of the many benefits of a pure function is that it can be cashed. Cashing is good but not complete test of purity but side effects are pretty easy to spot.
 
 __Imperative vs. Declarative__ A `for` loop is a very specific solution to looping. We call this _"imperative"_ because we are explaining _how_ to do the loop. With `Array.prototype.map` we are declaring _what_ we want. If I discover a more optimal way to map I can refactor my map function with out breaking all the code that calls it. We call this _"declarative"_. So if you want to know if you are writing declarative code ask your self if you can refactor it with out breaking the code that calls it.
 
@@ -56,6 +60,7 @@ const inc = x => x + 1; // x is a point
 const add3 = compose( inc, inc, inc ); // no points here
 const val = add3( 1 ); // val === 4
 
+// Note composition reads from left to right!
 // compose will return something like this
 x => inc( inc( inc( x ) ) );
 ```
@@ -79,6 +84,10 @@ a === b: // false
 ```
 
 __Container__ an object that you can place a value in with a function that takes a function and applies it to the value as input and returning a new container of the same type with the result as output.
+
+### Examples ###
+// Simulating stateful behavior without mutations
+`https://jsbin.com/laxoba/edit?js,console`
 
 
 ### Part One Homework ###
