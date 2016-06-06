@@ -30,7 +30,7 @@ __High-Order Functions__ Functions that can take and return functions.
 
 __Side Effects__ When a function mutates state outside it's scope.
 
-__Referential Transparency__ an input of `a` will always return an output of `b`. One of the many benefits of referential transparency is that it can be cashed. Cashing is good test of referential transparency.
+__Referential Transparency__ an input of `a` will always return an output of `b`. One of the many benefits of referential transparency is that it can be cached. Caching is good test of referential transparency.
 
 __Purity__ A referentialy transparent function with no side effects that is passed all the resources it needs to do it's job.
 
