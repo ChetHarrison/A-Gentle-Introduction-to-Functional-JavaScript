@@ -30,11 +30,9 @@ __High-Order Functions__ Functions that can take and return functions.
 
 __Side Effects__ When a function mutates state outside it's scope.
 
-__Referential Transparency__
+__Referential Transparency__ an input of `a` will always return an output of `b`. One of the many benefits of referential transparency is that it can be cashed. Cashing is good test of referential transparency.
 
-__Substitution vs. Environment Model__ A&S
-
-__Purity__ A function with no side effects that is passed all the resources it needs work and maps the same result given the same input. One of the many benefits of a pure function is that it can be cashed. Cashing is good but not complete test of purity but side effects are pretty easy to spot.
+__Purity__ A referentialy transparent function with no side effects that is passed all the resources it needs to do it's job.
 
 __Imperative vs. Declarative__ A `for` loop is a very specific solution to looping. We call this _"imperative"_ because we are explaining _how_ to do the loop. With `Array.prototype.map` we are declaring _what_ we want. If I discover a more optimal way to map I can refactor my map function with out breaking all the code that calls it. We call this _"declarative"_. So if you want to know if you are writing declarative code ask your self if you can refactor it with out breaking the code that calls it.
 
