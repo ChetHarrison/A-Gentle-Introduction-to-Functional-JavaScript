@@ -26,7 +26,7 @@ Check out "Time Travel Debug" from Redux DevTools
 
 __First-Class Functions__ Functions are valid values like primitives and objects.
 
-__High-Order Functions__ Functions that can take and return functions.
+__Higher-Order Functions__ Functions that can take and return functions.
 
 __Side Effects__ When a function mutates state outside it's scope.
 
