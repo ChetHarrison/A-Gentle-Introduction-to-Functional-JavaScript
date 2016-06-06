@@ -42,6 +42,8 @@ __Partial Application__ A function with an incomplete set of parameters.
 
 __Currying__ A curried function that is passed fewer parameters than it's arity will return a partially applied function that will delay execution until it has been passed all of the required parameters. [see this post by Hugh Jackson](https://web.archive.org/web/20140714014530/http://hughfdjackson.com/javascript/why-curry-helps)
 
+[This is the example JSBin from the talk](https://jsbin.com/qufoka/edit?js,console)
+
 ```
 const add = ( a, b ) => a + b; // has an arity of 2
 const addC = curry( add ); // returns a curried add function
