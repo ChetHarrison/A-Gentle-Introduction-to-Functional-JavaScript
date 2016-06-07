@@ -110,4 +110,4 @@ For a quick playground I would pull those libs into your favorite JSBin or CodeP
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash-fp/0.10.4/lodash-fp.js"></script>
 ```
 
-[Here is a sample bin that's all set up](https://jsbin.com/qizoru/edit?html,js,console)
+[Here is a sample bin that's all set up](https://ChetHarrison.jsbin.com/qizoru/edit?html,js,console)
