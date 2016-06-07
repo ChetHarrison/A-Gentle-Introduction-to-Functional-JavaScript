@@ -103,4 +103,11 @@ Explore some of the FP utility libraries out there:
 * [ramda](http://ramdajs.com)
 * [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
 
-For a quick playground I would pull those libs into your favorite JSBin or CodePen etc. and try out some composition. All of Ramda's functions are curried.
+For a quick playground I would pull those libs into your favorite JSBin or CodePen etc. and try out some composition. All of Ramda's functions are curried. Many of those sites let you select a library from a pre-populated list. All of them will let you edit the HTML pane. If you don't see the library you would like you can past the fallowing HTML in the page and you will have a reference to Ramda via it's exported namespace of "R" and lowdash-fp's "_".
+
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.21.0/ramda.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash-fp/0.10.4/lodash-fp.js"></script>
+```
+
+[Here is a sample bin that's all set up](https://jsbin.com/qizoru/edit?html,js,console)
