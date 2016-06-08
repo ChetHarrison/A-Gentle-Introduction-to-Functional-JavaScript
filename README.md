@@ -116,3 +116,9 @@ For a quick playground I would pull those libs into your favorite JSBin or CodeP
 [Here is a sample bin that's all set up](https://ChetHarrison.jsbin.com/qizoru/edit?html,js,console)
 
 Go ahead and "clone" it from the drop down menu in the upper left corner and you should be set up.
+
+--------------------
+
+
+# Part 2 #
+
