@@ -109,6 +109,7 @@ For a quick playground I would pull those libs into your favorite JSBin or CodeP
 
 ```
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.21.0/ramda.min.js"></script>
+<script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.fp.min.js"></script>
 ```
 
