@@ -158,12 +158,12 @@ Monad.prototype.toString = function() {
 and we call it like this:
 
 ```
-const result = Monad.of( 'foo' ).concat( Monad.of( 'bar' ) );
+const result1 = Monad.of( 'foo' ).concat( Monad.of( 'bar' ) );
 ```
 it is equivalent to:
 
 ```
-const result = R.concat( Monad.of( 'foo' ), Monad.of( 'bar' ) );
+const result2 = R.concat( Monad.of( 'foo' ), Monad.of( 'bar' ) );
 
 console.log( result1.toString() === result2.toString() ); // true
 ```
