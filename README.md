@@ -176,7 +176,7 @@ __Rule 1 (Closure)__: there is an operator that will take 2 inputs of the same t
 
 `1 + 1 = 2`
 
-This takes 2 Integers and produces one Integer.
+This takes two Integers and produces one Integer.
 
 __Rule 2 (Associativity)__: When combining more than two things, the pairwise combinations you choose don't matter. Example:
 
