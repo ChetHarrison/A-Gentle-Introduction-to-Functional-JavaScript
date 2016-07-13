@@ -180,7 +180,9 @@ This takes two Integers and produces one Integer.
 
 __Rule 2 (Associativity)__: When combining more than two things, the pairwise combinations you choose don't matter. Example:
 
-`( 1 + 2 ) + 3 === 6 === 1 + ( 2 + 3 )`
+`( 1 + 2 ) + 3 === 6` left association
+
+ `1 + ( 2 + 3 ) === 6` right association
 
 __Rule 3 (Identity)__: The result of combining the "identity" element (known as the "empty" in fantasyland) with x is always x. Example:
 "Under the `+` operator the set of integers has an `Identity` of `0`"
