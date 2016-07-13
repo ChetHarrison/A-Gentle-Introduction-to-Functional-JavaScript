@@ -121,4 +121,89 @@ Go ahead and "clone" it from the drop down menu in the upper left corner and you
 
 
 # Part 2 #
+__The Path to Building a Monad__
+
+Here is the big reveal: __The Array is just a container for mutable values__. After completing Jafar's tutorial you should be pretty handy with some basic functions that operate on JS Arrays. You now know how to side step mutations by producing a new value / values in a new Array.
+
+Because a __pure__ function has referential transparency it will always return a value. Because it is __first class__ we can think of it as a __lazy value__.
+
+Before we dive into Functors and Monads I would like to point out 2 ways of working with these containers. We have to ways to work with functions. We can add them to an object and call them like `myObj.doThis()`, or we can write a `doThis` function that takes an object parameter and operates on it in the same fashion. ie
+
+```
+[].map( doThis );
+
+const map = ( func, array ) => array.map( doThis );
+```
+Much of Ramda's power comes from the fact that many of the methods defined in the Fantasyland algebraic structures are implemented in Ramda and "dispatch" to the methods of one of the parameters it is called with _if_ it has a method of the same name. For example Ramda docs say that `R.concat` "Dispatches to the concat method of the first argument, if present." That means if I have:
+
+```
+class Monad {
+	constructor( value ) {
+		this.value = value;
+	}
+}
+
+Monad.prototype.of = Monad.of = value => new Monad( value );
+
+Monad.prototype.concat = Monad.concat = concat( monad ) {
+	return Monad.of( [ this.value, monad.value ] )
+}
+
+Monad.prototype.toString = function() {
+	return `Monad( ${ this.value } )`;
+}
+```
+
+and we call it like this:
+
+```
+const result = Monad.of( 'foo' ).concat( Monad.of( 'bar' ) );
+```
+is the same result as this
+
+```
+const result = R.concat( Monad.of( 'foo' ), Monad.of( 'bar' ) );
+
+console.log( result.toString() );
+```
+
+Will log this this `Monad( [ 'foo', 'bar' ] )` to the console. ( Mind you `toString` formatting will strip the array brackets )
+
+You start with a bunch of things, and some way of combining them two at a time. These are the `Monoid` rules. Monads are Monoids so they gain much of their composability from enforcing them.
+
+__Rule 1 (Closure)__: there is an operator that will take 2 inputs of the same type and produce one aggregate output of the same type. Example:
+
+`1 + 1 = 2`
+
+This takes 2 Integers and produces one Integer.
+
+__Rule 2 (Associativity)__: When combining more than two things, which pairwise combination you do first doesn't matter. Example:
+
+`( 1 + 2 ) + 3 === 6 === 1 + ( 2 + 3 )`
+
+__Rule 3 (Identity)__: The result of combining the "identity" (known as the "empty" in fantasyland) with x is always x. Example:
+"Under the `+` operator the set of integers has an `Identity` of `0`
+
+`0 + 1 = 1` left identity
+`1 + 0 = 1` right identity
+
+Armed with these rules you can perform the digital mastication of `reduce`. `reduce` in its Ramda form takes 3 parameters: `concat function`, `identity element`, `Array`. This is how we will integrate containers/monads of the same type with values of different types into one container of the same type with a list of containers of different types.
+
+A `Functor` has `map` function. I takes a `Functor` and a function, that takes a value, transforms it, and puts it back in a NEW `Functor` of the same type. The `Functor` you know well is JS's `Array`.
+
+`[ 1, 2 ].map( x => x + 1 ) // returns [ 2, 3 ]`
+
+and just to drive the Ramda point home, this does the same thing
+
+`R.map( ( x => x + 1 ), [ 2, 3 ] )`
+
+An `Applicative Functor` (AP) has an `of` method that is a factory for producing `Applicative Functors` _(note this is called RETURN in Haskell)_ and an `ap` method. This allows you to put a function into it's value and "apply" it to _values_ in other `Applicative Functors`. Here is the _key_ thing. The function you "lift" into your AP must be _curried_. In FP we are always passing in _one_ data parameter. The only way to feed a function that has multiple parameters (aka arity > 1) is to feed it params one at a time. Don't eat your dinner in one bite. Take it down in small bytes.
+
+A Monad implements these preceding concepts but adds a new method... `chain` (known as "bind" in Haskell). (Sorry I'm a parent) `map` is like changing a diaper. You are going to take a value (a baby) out of a `Functor` (a diaper) do your "transformation" (clean the baby) and put it back into a _new_ `Functor` (use a new diaper). `chain` is like you have a value (a teenager) that says "I want to change clothes". Clothes are Monads so they use chain to take off one Monad and put on another.
+
+[Fantasyland Specification](https://github.com/fantasyland/fantasy-land)
+[Functors Applicatives and Monads in Pictures!](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
+[Monads if you want to go DEEP](http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf)
+[Combinators](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45)
+[How to build up a recursive function](http://bit.ly/1rk0Bhp)
 
