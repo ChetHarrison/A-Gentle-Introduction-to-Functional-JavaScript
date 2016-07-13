@@ -183,12 +183,13 @@ __Rule 2 (Associativity)__: When combining more than two things, the pairwise co
 `( 1 + 2 ) + 3 === 6 === 1 + ( 2 + 3 )`
 
 __Rule 3 (Identity)__: The result of combining the "identity" element (known as the "empty" in fantasyland) with x is always x. Example:
-"Under the `+` operator the set of integers has an `Identity` of `0`""
+"Under the `+` operator the set of integers has an `Identity` of `0`"
 
 `0 + 1 = 1` left identity
+
 `1 + 0 = 1` right identity
 
-Armed with these rules you can perform the digital mastication of `reduce`.
+Armed with these rules you can perform the digital mastication of `reduce` because `reduce` requires a `concat` function and an `empty` value (aka an identity).
 
 A `Functor` has `map` function. I takes a `Functor` and a function, that takes a value, transforms it, and puts it back in a NEW `Functor` of the same type. The `Functor` you know well is JS's `Array`.
 
