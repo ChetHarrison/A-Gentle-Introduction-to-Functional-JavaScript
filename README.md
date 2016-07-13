@@ -202,7 +202,9 @@ An `Applicative Functor` (AP) has an `of` method that is a factory for producing
 
 A Monad implements these preceding concepts but adds a new method... `chain` (known as "bind" in Haskell). (Sorry I'm a parent) `map` is like changing a diaper. You are going to take a value (a baby) out of a `Functor` (a diaper) do your "transformation" (clean the baby) and put it back into a _new_ `Functor` (use a new diaper). `chain` is like you have a value (a teenager) that says "I want to change clothes". Clothes are Monads so they use `chain` to take off one outfit (`Monad`) and put on another (`Monad`).
 
+References
 * [Fantasyland Specification](https://github.com/fantasyland/fantasy-land)
+* [Scott Wlaschin is ON IT!](https://vimeo.com/97344498)
 * [Functors Applicatives and Monads in Pictures!](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 * [Monads if you want to go DEEP](http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf)
 * [Combinators](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45)
