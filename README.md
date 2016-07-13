@@ -193,7 +193,7 @@ __Rule 3 (Identity)__: The result of combining the "identity" element (known as 
 
 Armed with these rules you can perform the digital mastication of `reduce` because `reduce` requires a `concat` function and an `empty` value (aka an identity).
 
-A `Functor` has `map` function. I takes a `Functor` and a function, that takes a value, transforms it, and puts it back in a NEW `Functor` of the same type. The `Functor` you know well is JS's `Array`.
+A `Functor` takes takes a `value` or usually a list of `values` and has `map` function that is used to apply each element of the `values` to produce a NEW `Functor` of the same type. The `Functor` you know well is JS's `Array`.
 
 `[ 1, 2 ].map( x => x + 1 ) // returns [ 2, 3 ]`
 
