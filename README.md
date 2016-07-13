@@ -160,7 +160,7 @@ and we call it like this:
 ```
 const result = Monad.of( 'foo' ).concat( Monad.of( 'bar' ) );
 ```
-is equivalent to:
+it is equivalent to:
 
 ```
 const result = R.concat( Monad.of( 'foo' ), Monad.of( 'bar' ) );
