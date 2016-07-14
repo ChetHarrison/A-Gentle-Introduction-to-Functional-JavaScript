@@ -218,4 +218,5 @@ __References__
 * [Monads if you want to go DEEP](http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf)
 * [Combinators](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45)
 * [How to build up a recursive function](http://bit.ly/1rk0Bhp)
+* [Sanctuary](https://github.com/sanctuary-js/sanctuary)
 
