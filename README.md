@@ -270,21 +270,21 @@ In the front end that means
 Wrap all the different async push APIs in Observables and work with
 one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
 
-If we think of a native JS Array as synchronous collection we
-can pull data when we want. We will now think about collections
-of Asyncronous data that are pushed to us over time. We can use
-the same operators for both. Nothing new to learn and easy to
-reason about.
+If we think of a native JS Array as synchronous collections we
+can pull data from when we want. We will now think about Observables
+as collections of Asyncronous data that are pushed to us over time.
+We can use the same set of operators on both. Nothing new to learn
+and easy to reason about.
 
 [Iterable](http://jsbin.com/qufabi/edit?js,console) vs.
 Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
   * Observable is an "inverted" Iterable
-  * The Iterable and Observable are Producers
-  * The Iterator and Observer are conduits to the Consumer
-  * In the Iterable pastern the Consumer calls the Producer
+  * The Iterable and Observable objects are Producers
+  * The Iterator and Observer objects are conduits to the Consumer
+  * In the Iterable pattern the Consumer calls the Producer
     and it returns an Iterator. The Consumer is in charge of
     pulling the next value out of the Iterator.
-  * In the Observable pastern you
+  * In the Observable pattern you
     pass in an Observer and it pushes the next value to the
     Consumer through the Observer.
 
@@ -306,7 +306,8 @@ Observable from scratch
   * [Examples](https://jsbin.com/vabilo/edit?js)
   * [Observable takes a subscribe function that takes an Observer
     and returns a Disposable](http://jsbin.com/zaniri/edit?js,console,output)
-  * Translating method names between Fantasyland and RxJS
+  * Observables use the domain specific language of collections.
+    The following Fantasyland methods correspond to RxJS methods
       * "of" is "create"
       * "map" is "map"
       * "chain" is "flatMap" or "concatMap"
