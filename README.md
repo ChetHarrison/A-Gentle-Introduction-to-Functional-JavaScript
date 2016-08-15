@@ -256,19 +256,21 @@ Associated Bugs
   the Producer. Understanding where to place responsibility of any
   function is an extremely valuable skill to develop.
 
-What problems can we solve with FRP
+The Observable presents **a single universal, composable API**
+[example](https://jsbin.com/vabilo/edit?js,console,output) for working
+with:
   * Events
   * Network Requests
   * Timeouts/Intervals
+  * Promises
+  * Sync Collections like Arrays and Strings
+  * Task Monads
 
-In the front end that means
+In the front end that means you will use them to build:
   * Animations
   * App Init
   * Data Access
   * View Model Bindings
-
-Wrap all the different async push APIs in Observables and work with
-one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
 
 If we think of a native JS Array as synchronous collections we
 can pull data from when we want. We will now think about Observables
@@ -327,18 +329,42 @@ RxJS
   * [Operators](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md)
   * [Obsevable.create()](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md)
 
-Flattening Strategies for 2-dimensional Observables
-  * [Marble Diagrams](http://rxmarbles.com/)
-  * [concatAll](http://rxmarbles.com/#concat) preserves order
-  * [mergeAll](http://rxmarbles.com/#merge) first come first served
+Flattening Strategies for 2-dimensional Observables. Map returns our
+transformed stream in a new Observable so we end up with an Observable
+of Observables. This means we need to flatten inner Observables to
+one outer observable. [Marble Diagrams](http://rxmarbles.com/) can
+help you visualize the results of applying the various Observable
+operations. Here are the flattening strategies you are
+going to use the most:
+  * [merge](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/merge.html) first come first served
+  * [concat](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/concat.html) preserves order
   * switchLatest
-  * [zip](http://rxmarbles.com/#zip)
-
+  * [zip](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/zip.html)
 
 Disposal
-  * [take](http://rxmarbles.com/#take)
-  * [takeUntil](http://rxmarbles.com/#takeUntil)
-  * switchLatest
+  * [take](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/take.html)
+  * [takeUntil](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/takeuntil.html)
+  * [flatMapLatest](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/flatmaplatest.html)
+
+----------------
+**Extra Credit**
 
 Hot vs. Cold
+  * Cold Producer to Consumer data stream is one to one
+  * Hot Producer to Consumer data stream is one to many
+  * Observable.publish will convert a Cold Observable to a Hot one
+    so you can have many Consumers receive the same data.
+  * A Cold Observable: multiple distributed copies of the same movie
+    to a set of Consumers.
+  * A Hot Observable: a live performance that multiple Consumers can
+    attend.
+
+Subject
+  * A composite Observable and Observer
+  * It is a Proxy that will take multiple Observer subscriptions
+    and can subsequently subscribe to a Producer Observable.
+
+Schedulers
+
+do/tap for quarantined side effects and debug
 
