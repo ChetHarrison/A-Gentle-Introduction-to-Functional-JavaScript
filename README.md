@@ -253,7 +253,7 @@ Associated Bugs
 
   The problem with async code is the responsibility of unsubscribing
   is typically placed on the Consumer. The Observable
-  is like an "inverted" Iteratable. In an Observable we place the
+  is like an "inverted" Iterable. In an Observable we place the
   responsibiliy of unsubscribing on the right object: the Producer.
 
   Understanding on which object to place responsibility of any
