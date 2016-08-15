@@ -224,240 +224,119 @@ __References__
 
 ## Part 3 ##
 
-We started with basic training in Part 1. In Part 2 we cover a lot
-of theory and some practical application in error handling. Now
-we come to the the most powerful Monad ever conceived, the
-Continuation Monad. This was re-branded the Observable to fit
-with in the historic lexicon of the [GoF Design Patterns book.](https://en.wikipedia.org/wiki/Design_Patterns)
-
-It elegantly handles two of the hardest problems in programming:
-concurrency and asynchronism. It eliminates a vast number of some
-of the hardest bugs we routinely implement. For example:
-
-**Bug Class I**
-  * Symptom: I have a bug that I cannot consistently reproduce.
-  * Diagnosis: You have shared mutable state.
-  * Prescription: An Observable.
-
-**Bug Class II**
-  * Symptom: I have a memory leak because I forgot to unsubscribe
-  from my event listener.
-  * Diagnosis: It should not be your responsibility to do that.
-  * Prescription: An Observable.
-
-The problem with async code is the responsibility of unsubscribing
-is in the code that asks for the subscription. The Observable
-is like an inverted Iteratable. In this configuration it can
-unsubscribe under conditions that are declared at the moment we
-subscribe. This puts the responsibility in the right place.
-
-Putting the responsibility in the right place is an extremely
-powerful and advanced skill of any developer. The consequences of
-getting this wrong are enormous.
-
-"The key idea in this pattern is to take the responsibility for
-access and traversal out of the list object and put it into an
-Iterator object." p.257 Design Patterns
-
-If we can use an API that can handle a collection and a collection
-can be both empty and contain one item, let's use that.
-
-Lazy vs Eager
-
-```
-const foo = x => console.log( x );
-```
-
-Let's compare our Monads `map` method to our Observable's
-`map` method.
+*The Continuation Monad AKA the Observable*
+
+More power less code
+
+Arrow animation example [code](https://jsbin.com/xunike/edit?output)
+More power. Less code. Wrap all the different async push APIs and
+work with one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
+
+Async and Concurrency are 2 of the hardest problems
+
+Associated Bugs
+  **Bug Class I**
+    * Symptom: I have a bug that I cannot consistently reproduce.
+    * Diagnosis: You have shared mutable state.
+    * Prescription: An Observable.
+
+  **Bug Class II**
+    * Symptom: I have a memory leak because I forgot to unsubscribe
+    from my event listener.
+    * Diagnosis: It should not be your responsibility to do that.
+    * Prescription: An Observable.
+
+  The Iterator Pattern:
+  "The key idea in this pattern is to take the **responsibility** for
+  access and traversal out of the list object and put it into an
+  Iterator object." p.257 Design Patterns
+
+  The problem with async code is the responsibility of unsubscribing
+  is in the code that asks for the subscription. The Observable
+  is like an inverted Iteratable. In this configuration it can
+  unsubscribe under conditions that are declared at the moment we
+  subscribe. This puts the responsibility in the right place.
+
+  Putting the responsibility in the right place is an extremely
+  powerful and advanced skill of any developer. The consequences of
+  getting this wrong are enormous.
+
+What problems can we solve with FRP
+  * Events
+  * Network Requests
+  * Timeouts/Intervals
+
+Covers
+  * Animations
+  * App Init
+  * Data Access
+  * View Model Bindings
+
+If we think of a native JS Array as syncrounous collection we
+can pull data when we want. We will now think about collections
+of Asyncronous data that are pushed to us over time.
+
+[Iterable](http://jsbin.com/qufabi/edit?js,console) vs.
+Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
+  * Observable is an "inverted" Iterable
+  * The Iterable and Observable are Producers
+  * The Iterator and Observer are conduites to the Consumer
+  * In the Iterable patern the Consumer calls the Producer
+    and it returns an Iterator. The Consumer is in charge of
+    pulling the next value out of the Iterator.
+  * In the Observable patern you
+    pass in an Observer and it pushes the next value to the
+    Consumer through the Observer.
+
+Lazy vs. Eager
+  * don't do work you may not need to do
+
+Promise vs. Observable
+  * Can't cancel a Promise
+  * Promise is an eager item
+  * Observable is a lazy collection
+  * Can't retry a Promise with out wrapping it
+
+Items vs. Collections
+  * If we can use an API that can handle a collection and a
+    collection can be both empty and contain one item, let's
+    use that.
+
+Observable from scratch
+  * [Examples](https://jsbin.com/vabilo/edit?js)
+  * [Observable takes a subscribe function that takes an Observer
+    and returns a Disposable](http://jsbin.com/zaniri/edit?js,console,output)
+  * Translating method names between Fantasyland and RxJS
+      * "of" is "create"
+      * "map" is "map"
+      * "chain" is "flatMap"
+  * Jafar uses "forEach" === "subscribe" in his
+    [Frontend Masters Course](https://frontendmasters.com/courses/asynchronous-javascript/)
+  * Observer is an object with 3 callbacks that returns a Disposable
+    * onNext
+    * onError
+    * onCompleted
+  * Disposable has a "dispose" method that knows how to clean up
+
+RxJS
+  * [Repo](https://github.com/Reactive-Extensions/RxJS)
+  * [Examples](https://github.com/Reactive-Extensions/RxJS/tree/master/examples)
+  * [Docs](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core)
+  * [Better Docs](http://xgrommx.github.io/rx-book/index.html)
+  * [Operators](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md)
+  * [Obsevable.create()](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md)
 
-**Monad Map**
+Flattening Strategies for 2-dimentional Observables
+  * [concatAll](http://rxmarbles.com/#concat) preservs order
+  * [mergeAll](http://rxmarbles.com/#merge) first come first served
+  * switchLatest
+  * [zip](http://rxmarbles.com/#zip)
+  [Marble Diagrams](http://rxmarbles.com/)
 
-```
-Monad.prototype.map = function( projection ) {
-  return Monad.of( projection( this.value ) );
-}
-```
-
-**Observable Map**
-```
-Observable.prototype.map = function( projection ) {
-  const thisObservable = this;
-  return new Observable( observer => {
-    const subscription = thisObservable.subscribe( {
-      onNext : next => observer.onNext( projection( next ) ),
-      onError : error => observer.onError( error ),
-      onCompleted : _ => observer.onCompleted()
-    } );
+Disposal
+  * [take](http://rxmarbles.com/#take)
+  * [takeUntil](http://rxmarbles.com/#takeUntil)
+  * switchLatest
 
-    return subscription;
-  } );
-}
-```
+Hot vs. Cold
 
-See how they both take a projection function and return a new
-instance of their type with a transformed value?
-
-If we run this code we will not see a message logged to the
-console. All we have done is declared what WILL happen when
-we call `foo`. This demonstrates a more complicated but similar
-behavior. It is a function waiting to be called.
-
-```
-const drags =
-	element.mouseDowns.
-		map( mouseDown =>
-			element.mouseMoves.
-				takeUntil( mouseUps )
-		).
-		concatAll();
-```
-
-Here we have adapted `mouseDowns`, `mouseMoves`, and `mouseUps`
-to Observables. But this code will not run until we call
-`drags.forEach( observer )`.
-
-Laziness gives us flexibility.
-
-push vs. pull Observable vs. iterator
-Observable: the producer pushes to consumer
-Iterator: the consumer pulls data from producer
-
-One API for all push data sources vs. hundreds i.e.
-
-
-```
-var handler = _ => console.log( 'hi' );
-
-var handle = setTimeout( handler ); //
-clearTimeout( handle );
-
-var dom.addEventListner( 'click', handler );
-var dom.removeEventListner( 'click', handler );
-```
-
-takeUntil Declare when to unsubscribe from events
-
-{..1..2......3}.takeUntil(
-{.........4})
-
-{..1..2....}
-
-Terminate one potentially infinite stream when another stream
-fires.
-
-Flattening Strategies
-
-if you have an Observable of Observables there is more than
-one way to flatten them then concatAll. There a 3 methods
-that can handle all of the concurrency issues.
-[Here](http://rxmarbles.com/) is a very
-handy site to help you visualize these operators.
-
-1) concatAll (top to bottom left to right)
-
-{
-  ..{1}
-  .....{2..........3}
-  .......{}
-  ..........{4}
-}.concatAll()
-
-  ..{1..2..........34}
-imposes temporal order on multiple async streams
-
-Hot Observable like "mousemove" is constantly emitting values
-Cold Observable will wait until a subscription to emit values
-
-
-2) mergeAll (first come first serve)
-
-{
-  ..{1}
-  .....{2..........3}
-  .......{}
-  ..........{4}
-}.mergeAll()
-
-  ..{1..2....4.....3}
-
-This flattening strategy acts like cars in multiple lanes on
-a highway merging down to one lane.
-
-
-3) switchLatest
-
-{
-  ..{...1}
-  .....{...2}
-  ......{.3}
-  .........{..4}
-}.switchLatest()
-
-  ..{1....3..4}
-
-The most common flattening strategy. As soon as a new
-Observable starts we unsubscribe from from the previous one.
-If each button click is mapped into an async request this
-allows you to cancel preceding requests that are pending.
-
-See "JSOP as an Observable" sometimes we need to handle
-disposing of an Observable by setting a flag if dispose
-has been called to ensure we never call onNext again. This
-implements the Observable interface.
-
-COVER RxJS Obsevable.create()
-
-"forEach" is the pin that unleashes the non-deterministic
-behavior.
-
-State Bugs cannot exist in pure functions. We are separating
-code that deals with mutations from code that doesn't. Map,
-ConcatAll, Filter are pure functions. ForEach is where we
-mutate the dom. This makes your code safe to run in any order.
-
-When an Observable completes it frees the 3 handlers that the
-Observer handed to forEach. It cleans up after itself. dispose
-is just an explicit way of doing it. We don't need to explicitly
-unsubscribe.
-
-Infinite vs Finite streams.
-
-SPA require relentless clean up or face memory leaks. adding
-and removing event listeners as a classic example of mutating
-an object that you don't own. An Observable puts that burden
-on itself where it should be. All we are doing is composing
-Observables when we takeUntil.
-
-In the Iteratable you call it and it gives you an Iterator to call
-and pull the next value out. In the Observable you pass in an
-Observer and it pushes the next value.
-
-
-
-
-
-Covariant : if Apple is a subtype of Fruit then Salad( Apple ) is
-a subtype of Salad( Fruit ).
-
-Contravariant : if Apple is a subtype of Fruit then Salad( Fruit )
-is a subtype of Salad( Apple ).
-
-**Code**
-
-[RxJS Time Flies Example](https://jsbin.com/xunike/edit?html,output)
-[Async APIs Adapted to Observables](https://jsbin.com/vabilo/edit?js,console,output)
-[Observable is and Object with a subscribe method](http://jsbin.com/jociya/edit?js,console,output)
-[Observable From Scratch](http://jsbin.com/zaniri/edit?js,console,output)
-[Iterable vs Observable](http://jsbin.com/qufabi/edit?js,console)
-
-**Links**
-
-[RxJS](https://github.com/Reactive-Extensions/RxJS)
-[RxJS Excellent Docs](http://xgrommx.github.io/rx-book/index.html)
-[Conel Elliot's "definition" of FRP](http://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming/1030631#1030631)
-[Marble diagrams are a great way to visualize stream operations](http://rxmarbles.com/)
-
-TODO: map on a monad and an array operate the same way
-chain or concatMap achieve the same result on a monad and
-an array but are implemented differently explain why
