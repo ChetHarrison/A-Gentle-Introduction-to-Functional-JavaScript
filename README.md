@@ -226,13 +226,12 @@ __References__
 
 *The Continuation Monad AKA the Observable*
 
-More power less code
+More power less code.
 
-Arrow animation example [code](https://jsbin.com/xunike/edit?output)
-Wrap all the different async push APIs and
-work with one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
+[Arrow animation example](https://jsbin.com/xunike/edit?output)
 
-Async and Concurrency are 2 of the hardest problems
+Asynchronism and Concurrency are two of the hardest implement and
+reason about.
 
 Associated Bugs
   * **Bug Class I**
@@ -272,9 +271,14 @@ In the front end that means
   * Data Access
   * View Model Bindings
 
+Wrap all the different async push APIs in Observables and work with
+one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
+
 If we think of a native JS Array as synchronous collection we
 can pull data when we want. We will now think about collections
-of Asyncronous data that are pushed to us over time.
+of Asyncronous data that are pushed to us over time. We can use
+the same operators for both. Nothing new to learn and easy to
+reason about.
 
 [Iterable](http://jsbin.com/qufabi/edit?js,console) vs.
 Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
@@ -327,11 +331,12 @@ RxJS
   * [Obsevable.create()](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md)
 
 Flattening Strategies for 2-dimensional Observables
+  * [Marble Diagrams](http://rxmarbles.com/)
   * [concatAll](http://rxmarbles.com/#concat) preserves order
   * [mergeAll](http://rxmarbles.com/#merge) first come first served
   * switchLatest
   * [zip](http://rxmarbles.com/#zip)
-  [Marble Diagrams](http://rxmarbles.com/)
+
 
 Disposal
   * [take](http://rxmarbles.com/#take)
