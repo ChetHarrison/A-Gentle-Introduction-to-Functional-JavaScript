@@ -230,8 +230,8 @@ More power less code.
 
 [Arrow animation example](https://jsbin.com/xunike/edit?output)
 
-Asynchronism and Concurrency are two of the hardest implement and
-reason about.
+Asynchronism and Concurrency are two of the hardest concepts to
+implement and reason about.
 
 Associated Bugs
   * **Bug Class I**
@@ -245,20 +245,19 @@ Associated Bugs
     * Diagnosis: It should not be your responsibility to do that.
     * Prescription: An Observable.
 
-  The Iterator Pattern:
+  The Iterator Pattern as described by the GoF on p.257 of "Design
+  Patterns":
   "The key idea in this pattern is to take the **responsibility** for
   access and traversal out of the list object and put it into an
-  Iterator object." p.257 Design Patterns
+  Iterator object".
 
   The problem with async code is the responsibility of unsubscribing
-  is in the code that asks for the subscription. The Observable
-  is like an inverted Iteratable. In this configuration it can
-  unsubscribe under conditions that are declared at the moment we
-  subscribe. This puts the responsibility in the right place.
+  is typically placed on the Consumer. The Observable
+  is like an "inverted" Iteratable. In an Observable we place the
+  responsibiliy of unsubscribing on the right object: the Producer.
 
-  Putting the responsibility in the right place is an extremely
-  powerful and advanced skill of any developer. The consequences of
-  getting this wrong are enormous.
+  Understanding on which object to place responsibility of any
+  function is an extremely valuable skill to develop.
 
 What problems can we solve with FRP
   * Events
