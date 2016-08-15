@@ -229,18 +229,18 @@ __References__
 More power less code
 
 Arrow animation example [code](https://jsbin.com/xunike/edit?output)
-More power. Less code. Wrap all the different async push APIs and
+Wrap all the different async push APIs and
 work with one universal, composable API [code](https://jsbin.com/vabilo/edit?js,console,output)
 
 Async and Concurrency are 2 of the hardest problems
 
 Associated Bugs
-  **Bug Class I**
+  * **Bug Class I**
     * Symptom: I have a bug that I cannot consistently reproduce.
     * Diagnosis: You have shared mutable state.
     * Prescription: An Observable.
 
-  **Bug Class II**
+  * **Bug Class II**
     * Symptom: I have a memory leak because I forgot to unsubscribe
     from my event listener.
     * Diagnosis: It should not be your responsibility to do that.
@@ -266,13 +266,13 @@ What problems can we solve with FRP
   * Network Requests
   * Timeouts/Intervals
 
-Covers
+In the front end that means
   * Animations
   * App Init
   * Data Access
   * View Model Bindings
 
-If we think of a native JS Array as syncrounous collection we
+If we think of a native JS Array as synchronous collection we
 can pull data when we want. We will now think about collections
 of Asyncronous data that are pushed to us over time.
 
@@ -280,11 +280,11 @@ of Asyncronous data that are pushed to us over time.
 Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
   * Observable is an "inverted" Iterable
   * The Iterable and Observable are Producers
-  * The Iterator and Observer are conduites to the Consumer
-  * In the Iterable patern the Consumer calls the Producer
+  * The Iterator and Observer are conduits to the Consumer
+  * In the Iterable pastern the Consumer calls the Producer
     and it returns an Iterator. The Consumer is in charge of
     pulling the next value out of the Iterator.
-  * In the Observable patern you
+  * In the Observable pastern you
     pass in an Observer and it pushes the next value to the
     Consumer through the Observer.
 
@@ -309,7 +309,7 @@ Observable from scratch
   * Translating method names between Fantasyland and RxJS
       * "of" is "create"
       * "map" is "map"
-      * "chain" is "flatMap"
+      * "chain" is "flatMap" or "concatMap"
   * Jafar uses "forEach" === "subscribe" in his
     [Frontend Masters Course](https://frontendmasters.com/courses/asynchronous-javascript/)
   * Observer is an object with 3 callbacks that returns a Disposable
@@ -326,8 +326,8 @@ RxJS
   * [Operators](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md)
   * [Obsevable.create()](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md)
 
-Flattening Strategies for 2-dimentional Observables
-  * [concatAll](http://rxmarbles.com/#concat) preservs order
+Flattening Strategies for 2-dimensional Observables
+  * [concatAll](http://rxmarbles.com/#concat) preserves order
   * [mergeAll](http://rxmarbles.com/#merge) first come first served
   * switchLatest
   * [zip](http://rxmarbles.com/#zip)
