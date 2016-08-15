@@ -245,18 +245,15 @@ Associated Bugs
     * Diagnosis: It should not be your responsibility to do that.
     * Prescription: An Observable.
 
-  The Iterator Pattern as described by the GoF on p.257 of "Design
-  Patterns":
-  "The key idea in this pattern is to take the **responsibility** for
-  access and traversal out of the list object and put it into an
-  Iterator object".
+  The Iterator Pattern as described by the GoF on p.257 of Design
+  Patterns, "The key idea in this pattern is to take the
+  **responsibility** for access and traversal out of the list object
+  and put it into an Iterator object".
 
-  The problem with async code is the responsibility of unsubscribing
-  is typically placed on the Consumer. The Observable
-  is like an "inverted" Iterable. In an Observable we place the
-  responsibiliy of unsubscribing on the right object: the Producer.
-
-  Understanding on which object to place responsibility of any
+  The problem with browser event APIs is that the responsibility
+  of unsubscribing is placed on the wrong object: the Consumer.
+  In Observables we place the responsibility on the right object:
+  the Producer. Understanding where to place responsibility of any
   function is an extremely valuable skill to develop.
 
 What problems can we solve with FRP
