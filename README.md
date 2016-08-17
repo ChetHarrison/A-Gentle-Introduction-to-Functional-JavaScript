@@ -184,7 +184,7 @@ __Rule 2 (Associativity)__: When combining more than two things, the pairwise co
 
  `1 + ( 2 + 3 ) === 6` right association
 
-__Rule 3 (Identity)__: The result of combining the "identity" element (known as the "empty" in fantasyland) with x is always x. Example:
+__Rule 3 (Identity)__: The result of combining the "identity" element (known as the "empty" in Fantasyland) with x is always x. Example:
 "Under the `+` operator the set of integers has an `Identity` of `0`"
 
 `0 + 1 = 1` left identity
@@ -224,7 +224,7 @@ __References__
 
 ## Part 3 ##
 
-*The Continuation Monad AKA the Observable*
+__A Continuation Monad called the Observable__
 
 More power less code.
 
@@ -277,6 +277,8 @@ can pull data from when we want. We will now think about Observables
 as collections of Asyncronous data that are pushed to us over time.
 We can use the same set of operators on both. Nothing new to learn
 and easy to reason about.
+
+[Continuation Passing Style (CPS)](https://jsbin.com/quqawev/edit?js,console)
 
 [Iterable](http://jsbin.com/qufabi/edit?js,console) vs.
 Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
