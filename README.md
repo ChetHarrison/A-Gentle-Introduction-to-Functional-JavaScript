@@ -278,6 +278,19 @@ as collections of Asyncronous data that are pushed to us over time.
 We can use the same set of operators on both. Nothing new to learn
 and easy to reason about.
 
+Let's look at a metaphor for an async request. Suppose your house
+catches on fire. You call the fire department and ask them to put
+out the fire. Then you pick up a fire extinguisher and put out the
+fire yourself. When the firetruck arrives you have no need for
+their services because the **Environment** has changed.
+
+In this context the implicit instructions you gave to the fire
+department, "please put out the fire" are called a
+**Continuation**. The tricky part is figuring how to deal with
+your **Continuation** in a new **Environment**. This lead to an
+early functional style of programming called Continuation Passing
+Style (CPS).
+
 [Continuation Passing Style (CPS)](https://jsbin.com/quqawev/edit?js,console)
   * CPS is powerful but extremely complex to reason about.
   * Fortunately it can be expressed in Monadic form.
