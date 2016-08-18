@@ -279,6 +279,8 @@ We can use the same set of operators on both. Nothing new to learn
 and easy to reason about.
 
 [Continuation Passing Style (CPS)](https://jsbin.com/quqawev/edit?js,console)
+  * CPS is powerful but extremely complex to reason about.
+  * Fortunately it can be expressed in Monadic form.
 
 [Iterable](http://jsbin.com/qufabi/edit?js,console) vs.
 Observable [video](https://www.youtube.com/watch?v=looJcaeboBY)
