@@ -285,9 +285,9 @@ fire yourself. When the firetruck arrives you have no need for
 their services because the **Environment** has changed.
 
 In this context the implicit instructions you gave to the fire
-department, "please put out the fire" are called a
+department, "please put out the fire", are called a
 **Continuation**. The tricky part is figuring how to deal with
-your **Continuation** in a new **Environment**. This lead to an
+your **Continuation** in a new **Environment**. This led to an
 early functional style of programming called Continuation Passing
 Style (CPS).
 
