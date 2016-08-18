@@ -323,7 +323,9 @@ Observable from scratch
     * onCompleted
   * Disposable has a "dispose" method that knows how to clean up
 
-RxJS
+RxJS Reactive Extensions
+  * [Drag and Drop with Rx](http://jsbin.com/zatoqi/edit?js,output)
+  * [Autocomplete with Rx](http://jsbin.com/yefinav/edit?js,console,output)
   * [Repo](https://github.com/Reactive-Extensions/RxJS)
   * [Examples](https://github.com/Reactive-Extensions/RxJS/tree/master/examples)
   * [Docs](https://github.com/Reactive-Extensions/RxJS/tree/master/doc/api/core)
@@ -342,6 +344,15 @@ going to use the most:
   * [concat](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/concat.html) preserves order
   * switchLatest
   * [zip](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/zip.html)
+
+If the letters represent items arriving from left to right and top to
+bottom over time the results of concat and merge are displayed below.
+stream1 A C E
+stream2  B D F
+concat  A C E B D F
+merge   ABCDEF
+
+xAll and xMap Operators and Aliases
 
 Disposal
   * [take](http://xgrommx.github.io/rx-book/content/observable/observable_instance_methods/take.html)
