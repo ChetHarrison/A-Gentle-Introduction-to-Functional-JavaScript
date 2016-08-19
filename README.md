@@ -224,15 +224,13 @@ __References__
 
 ## Part 3 ##
 
-___MCILROY: . . . I’m afraid you went a bit too far in the elimination
+From the pre-async days: ... [___MCILROY: . . . I’m afraid you went a bit too far in the elimination
 of the goto, because this actually changes the temporal
 existence of values. If every goto is replaced by a procedure
 call, then this means that the entire history of the computation
-must be maintained. I’m a bit concerned about this limitation.___
+must be maintained. I’m a bit concerned about this limitation.___](http://www.cs.ru.nl/~freek/courses/tt-2011/papers/cps/histcont.pdf)
 
-__A Continuation Monad called the Observable__
-
-More power less code.
+__The Almighty "Continuation" Monad: the "Observable"__
 
 [Arrow animation example](https://jsbin.com/xunike/edit?output)
 
