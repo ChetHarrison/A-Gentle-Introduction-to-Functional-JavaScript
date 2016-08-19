@@ -224,6 +224,12 @@ __References__
 
 ## Part 3 ##
 
+___MCILROY: . . . I’m afraid you went a bit too far in the elimination
+of the goto, because this actually changes the temporal
+existence of values. If every goto is replaced by a procedure
+call, then this means that the entire history of the computation
+must be maintained. I’m a bit concerned about this limitation.___
+
 __A Continuation Monad called the Observable__
 
 More power less code.
@@ -290,6 +296,9 @@ department, "please put out the fire", are called a
 your **Continuation** in a new **Environment**. This led to an
 early functional style of programming called Continuation Passing
 Style (CPS).
+
+From my research the earliest reference to a Continuation is
+[Adriaan van Wijngaarden in 1964](http://www.cs.ru.nl/~freek/courses/tt-2011/papers/cps/histcont.pdf)
 
 [Continuation Passing Style (CPS)](https://jsbin.com/quqawev/edit?js,console)
   * CPS is powerful but extremely complex to reason about.
