@@ -363,10 +363,12 @@ going to use the most:
 
 If the letters represent items arriving from left to right and top to
 bottom over time the results of concat and merge are displayed below.
+```
 stream1 A C E
 stream2  B D F
 concat  A C E B D F
 merge   ABCDEF
+```
 
 xAll and xMap Operators and Aliases
 
