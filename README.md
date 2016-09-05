@@ -133,7 +133,7 @@ Before we dive into Functors and Monads I would like to point out two ways of wo
 ```
 const result = [].map( doThis );
 
-const result = map = ( func, array ) => array.map( doThis );
+const result = map = ( doThis, array ) => array.map( doThis );
 ```
 Much of Ramda's power comes from the fact that many of the methods defined in the Fantasyland algebraic structures are implemented in Ramda and "dispatch" to the methods of one of the parameters it is called with _if_ it has a method of the same name. For example: the Ramda docs say that `R.concat` "Dispatches to the concat method of the first argument, if present." That means if I have:
 
